@@ -2,12 +2,22 @@ require("dotenv").config();
 
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { DISCORD_TOKEN: token } = process.env;
+const { Player } = require("discord-player");
 
 const fs = require("node:fs");
 const path = require("node:path");
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+});
+
+const player = new Player(client);
+
+player.events.on("playerStart", (queue, track) => {
+  // we will later define queue.metadata object while creating the queue
+  queue.metadata.channel.send(`Started playing **${track.title}**!`);
+});
 
 client.commands = new Collection();
 
