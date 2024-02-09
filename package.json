@@ -10,8 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discord-player/extractor": "^4.4.6",
+    "discord-player": "^6.6.7",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.4.1"
+    "dotenv": "^16.4.1",
+    "mediaplex": "^0.0.9",
+    "youtube-ext": "^1.1.16"
   },
   "devDependencies": {
     "eslint": "^8.56.0"
