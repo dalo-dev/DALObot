@@ -4,7 +4,13 @@ const { useMainPlayer } = require("discord-player");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("play")
-    .setDescription("Plays some music"),
+    .setDescription("Plays some music")
+    .addStringOption((option) =>
+      option
+        .setName("query")
+        .setDescription("The song you want to play")
+        .setRequired(true)
+    ),
   async execute(interaction) {
     const player = useMainPlayer();
     const channel = interaction.member.voice.channel;
